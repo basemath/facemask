@@ -5,8 +5,7 @@
 setInterval(() => {
     Array.from(getFeedItems()).forEach(item => {
         if (feedItemIsShared(item)) {
-            item.style.opacity = '0.5';
-            traverseElementsAndHideContent(item);
+            item.style.display = 'none';
         }
     });
 }, 1000);
@@ -27,29 +26,4 @@ function feedItemIsShared(item) {
         return el.getAttribute('aria-label').toLowerCase().startsWith('shared with');
     });
     return sharedIcons.length > 1;
-}
-
-// the divs to hide in a shared post
-// are only identified by the fact tha they are the latter
-// divs in a group of sibling divs > 2, where the first 2
-// are used to display the author, which we want to keep displayed
-function traverseElementsAndHideContent(el) {
-    const divs = [];
-    for (let i = 0; i < el.children.length; i++) {
-        const child = el.children[i];
-        if (child.tagName == 'DIV') {
-            divs.push(child);
-        }
-    }
-    // this is not the level we are looking for, keep recursing
-    if (divs.length < 3) {
-        for (let i = 0; i < divs.length; i++) {
-            traverseElementsAndHideContent(divs[i]);
-        }
-    } else {
-        // this is it, hide the content & comment divs
-        for (let i = 2; i < divs.length; i++) {
-            divs[i].style.display = 'none';
-        }
-    }
 }
