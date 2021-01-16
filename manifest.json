@@ -2,22 +2,24 @@
   "manifest_version": 2,
   "name": "FaceMask",
   "version": "0.0.1",
-  "description": "Face? Mask.",
+  "description": "Face: Mask",
   "short_name": "FaceMask",
   "permissions": [
-    "scripting"
+    "https://facebook.com/*",
+    "https://www.facebook.com/*"
   ],
   "content_scripts": [
     {
       "matches": [
-        "https://facebook.com/*"
+        "https://facebook.com/*",
+        "https://www.facebook.com/*"
       ],
-      "css": [
-        "background.css"
-      ],
+      "css": [],
       "js": [
-        "background.js"
-      ]
+        "facemask.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
     }
   ],
   "browser_action": {
