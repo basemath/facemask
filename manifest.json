@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "FaceMask",
   "version": "0.0.1",
-  "description": "Face: Mask",
+  "description": "Fight the share button on Facebook",
   "short_name": "FaceMask",
   "permissions": [
     "https://facebook.com/*",
