@@ -4,7 +4,8 @@
 // introduce complexity and this is working well enough so far
 setInterval(() => {
     Array.from(getFeedItems()).forEach(item => {
-        if (feedItemIsShared(item)) {
+        if (feedItemIsShared(item) && item.style.display !== 'none') {
+            console.log(item)
             item.style.display = 'none';
         }
     });
